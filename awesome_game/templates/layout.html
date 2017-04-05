@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="nl">
+  <!--
+    BOOTSTRAP-V4 TEMPLATE
+    https://v4-alpha.getbootstrap.com/
+  -->
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Team Awesome Game">
+    <link rel="icon" href="/static/images/favicon.ico"  type="image/x-icon">
+
+    <title>Awesome-Game.me - {% block title %}{% endblock %}</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700" rel="stylesheet"> 
+    <style>
+      body {
+        font-family: 'Open Sans', -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+      }
+      h1, .navbar-brand {
+        letter-spacing: 0.06em;
+        font-variant: small-caps;
+      }
+      nav {
+         box-shadow: 0 0 25px rgba(0,0,0,0.5);
+      }
+      .jumbotron {
+         box-shadow: 0 0 10px rgba(0,0,0,0.4);
+      }
+      h1, p.lead, .card-title, .card-text, footer {
+        text-align: center;
+      }
+    </style>
+    {% block head %}
+    {% endblock %}
+    
+  </head>
+  <body>
+    <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button> 
+      <a class="navbar-brand" href="/"><strong>Awesome-Game.me</strong></a>
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/team">Team</a>
+          </li>
+           <li class="nav-item">
+            <a class="nav-link" href="/highscores">Highscores</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#"  data-toggle="dropdown">Games</a>
+            <div class="dropdown-menu">
+            {% for item in game_dropdown %}
+              <a class="dropdown-item" href="{{ item.href }}">{{ item.caption }}</a>
+            {% endfor %}
+            </div>
+          </li>
+        </ul>
+        <ul class="navbar-nav justify-content-end">
+        {% if current_user.is_authenticated and current_user.nickname %}
+          <li class="nav-item">
+            <span class="nav-link" style="color:#fff;"><strong>Welkom terug {{ current_user.nickname }}!</strong></span>
+          </li>
+          <li class="nav-item">
+            <a class="btn btn-outline-success" role="button" href="{{ url_for("logout") }}">Uitloggen</a>
+          </li>
+        {% else %}
+          <li class="nav-item">
+            <a class="btn btn-outline-success" role="button" href="{{ url_for("google.login") }}">Login met Google</a>
+          </li>
+        {% endif %}
+        </ul>
+      </div>
+    </nav>
+    {% block content %}
+      {% block footer %}
+        <hr>
+        <footer>
+          <p>&copy; Team Awesome Game 2017 &ensp; | &ensp; <a href='/verantwoording'>Verantwoording</a></p>
+        </footer>
+      {% endblock %}
+    {% endblock %}
+
+    <!-- Bootstrap  JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    {% block scripts %}
+    {% endblock %}
+  </body>
+</html>

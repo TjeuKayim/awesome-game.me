@@ -1,0 +1,58 @@
+{% extends "layout.html" %} {% block title %} Het Team {% endblock %}
+{% block head %}
+<link href="/static/css/Side-page.css" rel="stylesheet">
+{% endblock %}
+{% block content %}
+<div class="jumbotron jumbotron-fluid text-white">
+  <div class="container">
+    <h1 class="display-3">Het Team</h1>
+    <p class="lead">
+    </p>
+  </div>
+</div>
+<div class="container">
+  <div class="row mb-4">
+    <div class="col-md-6 mb-4">
+      <div class="card bg-inverse text-white">
+        <img class="card-img-top" src="static/images/tjeu3.jpg" alt="Card image cap" style="height:200 width=200">
+        <div class="card-block">
+          <p class="card-text">Tjeu Kayim (The most valued player)  </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 mb-4">
+      <div class="card bg-inverse text-white">
+        <img class="card-img-top" src="static/images/Pieter2.jpg" alt="Card image cap" style="height:200 width=200">
+        <div class="card-block">
+          <p class="card-text">Pieter van der Vleuten (Life-coach) </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 mb-4">
+      <div class="card bg-inverse text-white">
+        <img class="card-img-top" src="static/images/Damian2.jpg" alt="Card image cap" style="height:200 width=200">
+        <div class="card-block">
+          <p class="card-text">Damian van Heeswijk (Head Creativity Departement)</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 mb-4">
+      <div class="card bg-inverse text-white">
+        <img class="card-img-top" src="static/images/Mathijs.jpg" alt="Card image cap" style="height:200 width=200">
+        <div class="card-block">
+          <p class="card-text">Mathijs Bouma (Catch me outside, ho abou da) </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class='container'>
+
+
+
+  {% block footer %} {{ super() }} {% endblock %}
+</div>
+<!-- /container -->
+{% endblock content %}

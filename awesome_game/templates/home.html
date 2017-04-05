@@ -1,0 +1,107 @@
+{% extends "layout.html" %} {% block title %}Home{% endblock %} {% block head %}
+<link href="/static/css/home-page.css" rel="stylesheet"> {% endblock %} {% block content %}
+<!-- Main jumbotron for a primary marketing message or call to action -->
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-3">Welkom op dé site voor pong</h1>
+    <p class="lead">Pong, pong en nog meer pong. Tegen vrienden, tegen vreemden. Speel en ervaar onze pong-games</p>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    {% for g in Games %}
+    <div class="col-lg-4 col-md-6  mb-5">
+      <div class="card bg-inverse card-inverse h-100" onclick="javascript:location.href='/{{ g.game_info['url'] }}'">
+        <img class="card-img-top img-fluid" src="/games/{{ g.game_info.path }}/linkfoto.gif">
+        <div class="card-block">
+          <h4 class="card-title">{{ g.game_info['naam_spel'] }}</h4>
+          <p class="card-text">{{ g.game_info['omschrijving'] }}</p>
+        </div>
+        <div class="card-footer border-0">
+          <p class="lead">Top 3</p>
+          <TABLE class='table table-sm'>
+            <TR>
+              <Td><b>SPELER</b></Td>
+              <Td><b>SCORE</b></Td>
+            </TR>
+            {% for row in g.highscoresTop(3) %}
+            <TR>
+              <TD>{{ row.nickname }}</TD>
+              <TD>{{ row.score }}</TD>
+            </TR>
+          {% endfor %}
+          </TABLE>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  
+  <div class="row">
+       <div class="col-md-6">
+      <h2>Het Team</h2>
+      <p>Leer het Team kennen achter jou favorite pong games</p>
+      <p><a class="btn btn-secondary" href="/team" role="button">Lees meer &raquo;</a></p>
+    </div>
+    <div class="col-md-6">
+      <h2>Highscores</h2>
+      <p>Kijk hier of je al een plekje hebt bereikt in onze top 10 of bekijk wat je moet score om de top 10 te Halen</p>
+      <p><a class="btn btn-secondary" href="/highscores" role="button">Lees meer &raquo;</a></p>
+    </div>
+  </div>
+  {% if current_user.is_authenticated and not current_user.nickname %}
+  <div class="modal fade show" style="display:block">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Kies een nickname</h5>
+        </div>
+        <form action="/kies-nickname" method="POST">
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="nickname-input text-left" class="form-control-label">Nickname:</label>
+              <input name="nickname" type="text" class="form-control form-control-danger form-control-success" id="nickname-input" maxlength="20" autofocus>
+              <div class="form-control-feedback"></div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Verzenden</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="modal-backdrop fade show"></div>
+  {% endif %}
+  {% block footer %} {{ super() }} {% endblock %}
+</div>
+<!-- /container -->
+{% endblock content %}
+{% if current_user.is_authenticated and not current_user.nickname %}
+{% block scripts %}
+  <script>
+    var $form = $('form[action="/kies-nickname"] .form-group')
+    var $feedback = $form.find('.form-control-feedback')
+    var validate = false
+    var $nickname = $('input[name="nickname"]')
+    $nickname.on('input', function(){
+        var nick = this.value
+        if (nick.length > 3)
+            validate = true
+        if (validate) {
+            $.post("/kies-nickname", { validate: 1, nickname: nick}, function(data){
+                if (data == 'Valid') {
+                    $form.removeClass('has-danger')
+                    $form.addClass('has-success')
+                    $feedback.text('')
+                } else {
+                    $form.removeClass('has-success')
+                    $form.addClass('has-danger')
+                    $feedback.text(data)
+                }
+            })
+        }
+    })
+  </script>
+{% endblock %}
+{% endif %}

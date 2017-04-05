@@ -1,0 +1,18 @@
+.jumbotron {
+  background-color: #faff9a;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.card {
+  cursor: pointer;
+  transition: opacity 0.1s, box-shadow 0.3s;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.20), 0 3px 12px rgba(0,0,0,0.30);
+  transition: 
+      box-shadow 0.3s cubic-bezier(.25,.8,.25,1),
+      transform 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+.card:hover {
+  box-shadow: 0 30px 45px rgba(0,0,0,0.30), 0 20px 25px rgba(0,0,0,0.30);
+  transform: scale(1.05)
+}

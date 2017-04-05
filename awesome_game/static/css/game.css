@@ -1,0 +1,32 @@
+.jumbotron {
+    background-color: #5079c1;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+}
+#connection-status {
+    font-family: monospace;
+}
+body {
+    background-color: #000;
+} 
+/* Responsive Canvas */
+#game-canvas {
+    max-width: 100%;
+    display: block;
+    margin: 0 auto;
+    max-height: 100vh;
+    width: inherit;
+}
+/* 
+@media screen and (min-width: 576px) {
+    #game-canvas {height: 382.5px}
+}
+@media screen and (min-width: 768px) {
+    #game-canvas {height: 517.5px}
+}
+@media screen and (min-width: 992px) {
+    #game-canvas {height: 697.5px}
+}
+@media screen and (min-width: 1200px) {
+    #game-canvas {height: 832.5px}
+}
+ */

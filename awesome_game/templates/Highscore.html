@@ -1,0 +1,35 @@
+{% extends "layout.html" %} {% block title %} Highscores {% endblock %} {% block head %}
+<link href="/static/css/Side-page.css" rel="stylesheet"> {% endblock %} {% block content %}
+<div class="jumbotron jumbotron-fluid text-white">
+  <div class="container">
+    <h1 class="display-3">Highscores</h1>
+    <p class="lead">Hier kun je de highscores zien die bereikt zijn. Sta jij al in de top 10 ergens? Zo niet, dan doorvechten en probeer je eigen plek te behalen in de toppen.</p>
+  </div>
+</div>
+
+<div class='container'>
+  <div class='row'>
+  {% for Game in Games %}
+    <div class="col-lg-4 col-md-6  mb-5">
+      <H1>{{ Game.game_info.naam_spel }}</H1>
+      <TABLE class='table table-striped'>
+        <TR>
+          <Td><b>#</b></Td>
+          <Td><b>SPELER</b></Td>
+          <Td><b>SCORE</b></Td>
+        </TR>
+        {% for row in Game.highscoresTop(10) %}
+        <TR>
+          <TD>{{ loop.index }}</TD>
+          <TD>{{ row.nickname }}</TD>
+          <TD>{{ row.score }}</TD>
+        </TR>
+        {% endfor %}
+      </TABLE>
+    </div>
+  {% endfor %}
+  </div>
+</div>
+<center>{% block footer %} {{ super() }} {% endblock %}
+<!-- /container -->
+{% endblock content %}</center>

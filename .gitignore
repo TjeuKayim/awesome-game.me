@@ -1,0 +1,8 @@
+env/
+awesome_game.egg-info/
+__pycache__/
+
+database.db
+database.db.bak
+.ftpignore
+*.bak

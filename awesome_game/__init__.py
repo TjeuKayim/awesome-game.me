@@ -6,7 +6,7 @@ from werkzeug.contrib.fixers import ProxyFix
 app = Flask(__name__, static_url_path='/static')
 app.wsgi_app = ProxyFix(app.wsgi_app)
 
-db_path = os.path.join(os.path.dirname(__file__), 'app.db')
+db_path = os.path.join(os.path.dirname(__file__), 'database.db')
 db_uri = 'sqlite:///{}'.format(db_path)
 app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
 
@@ -66,4 +66,3 @@ if __name__ == "__main__":
     else:
         #app.run(host='0.0.0.0',port=8000,debug=True,use_reloader=True)
         socketio.run(app, debug=True)
-# fae@f8iu_D7du

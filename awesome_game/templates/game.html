@@ -36,7 +36,7 @@
 <!-- <script src="/games/{{ game_info.path }}/client.js"  type="text/javascript"></script> -->
 <script>
 // --------- WebSocket connection -----------
-var socket = io.connect('https://www.awesome-game.me/{{ game_info.url }}', {reconnection: false});
+var socket = io.connect('https://'+location.host+'/{{ game_info.url }}', {reconnection: false});
 </script>
 <script src="/static/js/game.js"  type="text/javascript"></script>
 {% endblock %}

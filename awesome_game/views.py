@@ -1,6 +1,6 @@
 ''' ========================= Webpagina's ======================== '''
 from awesome_game import app, Games
-from flask import render_template, redirect, url_for, request, make_response
+from flask import render_template, redirect, url_for, request, make_response, send_from_directory
 from flask_login import current_user
 
 @app.route("/")
@@ -26,3 +26,12 @@ def highscores():
 @app.route("/team")
 def team():
     return render_template('Team.html')
+
+# Static files (alleen om te testen, NGINX doet dit normaal gesproken)
+#@app.route('/static/<path:path>')
+#def send_js(path):
+#    return send_from_directory('static', path)
+
+@app.route('/games/<path:path>')
+def send_js(path):
+    return send_from_directory('games', path)

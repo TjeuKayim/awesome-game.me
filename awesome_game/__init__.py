@@ -1,11 +1,15 @@
-import sys
+import sys, os
 from flask import Flask
 from flask_login import current_user
 from werkzeug.contrib.fixers import ProxyFix
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='/static')
 app.wsgi_app = ProxyFix(app.wsgi_app)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////home/deploy/awesome-game/database.db'
+
+db_path = os.path.join(os.path.dirname(__file__), 'app.db')
+db_uri = 'sqlite:///{}'.format(db_path)
+app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
+
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = 'x09dV#sk>_Dsd7/f230fjhS'
 

@@ -1,5 +1,4 @@
 # Project Awesome-Game
-
 [Awesome-Game.me](https://www.awesome-game.me/) is een schoolproject door 4 vwo6 leerlingen van het Zwijsencollege Veghel. 
 Met dit eindproject ronden we het vak informatica af. 
 Voor dit project hebben wij codeanywhere gebruikt om de code te schrijven, enevals een gratis server van digitalocean 
@@ -12,4 +11,4 @@ Wij hopen dat jullie met plezier onze 'Awesome Games' spelen.
 
 *Team Awesome Game*
 
-Kijk op de Wiki-pagina voor een korte documentatie https://github.com/tjeukayim/awesome-game.me/wiki
+Documentatie: https://github.com/tjeukayim/awesome-game.me/wiki

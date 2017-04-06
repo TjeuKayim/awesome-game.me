@@ -11,4 +11,6 @@ Wij hopen dat jullie met plezier onze 'Awesome Games' spelen.
 
 *Team Awesome Game*
 
+--------------------
+
 Documentatie: https://github.com/tjeukayim/awesome-game.me/wiki

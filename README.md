@@ -11,3 +11,5 @@ waar hij sterk in is, om zo iedereens qualiteiten zo goed mogelijk te benutten.
 Wij hopen dat jullie met plezier onze 'Awesome Games' spelen.
 
 *Team Awesome Game*
+
+Kijk op de Wiki-pagina voor een korte documentatie https://github.com/tjeukayim/awesome-game.me/wiki

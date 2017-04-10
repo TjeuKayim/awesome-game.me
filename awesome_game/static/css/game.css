@@ -16,6 +16,10 @@ body {
     max-height: 100vh;
     width: inherit;
 }
+
+#ws-log {
+    display: none;
+}
 /* 
 @media screen and (min-width: 576px) {
     #game-canvas {height: 382.5px}
